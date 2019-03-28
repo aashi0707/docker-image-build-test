@@ -1,2 +1,2 @@
 FROM alpine
-CMD echo "hello aashi"
+CMD echo "hello aashi,how are you"
