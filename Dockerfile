@@ -1,9 +1,11 @@
-FROM mysql
-#set root pass
-ENV MYSQL_ROOT_PASSWORD password
-#update linux
-RUN apt-get update
-#create database
-RUN mysql -u root -ppassword -e "CREATE DATABASE dbname"
-#install vim
-RUN apt-get install vim -y
+
+
+FROM centos:7
+#time to install httpd & php
+RUN yum install httpd php -y
+#copying index.php page to document root
+COPY index.php /var/www/html/
+##exposing a port number
+EXPOSE 80
+##starting service
+ENTRYPOINT httpd -DFOREGROUND
